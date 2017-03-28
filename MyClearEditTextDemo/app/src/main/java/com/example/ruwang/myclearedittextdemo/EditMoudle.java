@@ -1,7 +1,6 @@
 package com.example.ruwang.myclearedittextdemo;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.graphics.drawable.Drawable;
@@ -24,21 +23,11 @@ public class EditMoudle extends BaseObservable {
     public static final String REGEX_MOBILE_EXACT = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|(147))\\d{8}$";
     public ObservableField<String> number = new ObservableField<>();
     public ObservableInt type = new ObservableInt();
+    public ObservableField<String> password = new ObservableField<>();
 
-    private String password;
 
     public EditMoudle() {
         type.set(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        notifyPropertyChanged(BR.password);
-    }
-
-    @Bindable
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
     /*
     @BindingAdapter({"regular", "errorMsg"})

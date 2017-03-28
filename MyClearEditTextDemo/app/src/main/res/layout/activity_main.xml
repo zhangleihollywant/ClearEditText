@@ -7,6 +7,10 @@
         <variable
             name="modle"
             type="com.example.ruwang.myclearedittextdemo.EditMoudle"/>
+
+        <variable
+            name="input"
+            type="String"/>
     </data>
 
     <LinearLayout
@@ -40,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!--如果直接在module中定义String类进行绑定数据的话得不到效果的，用局域-->
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -64,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="验证的文本"
-            android:text="@={modle.password}"/>
+            android:text="@{modle.password}"/>
 
         <Button
             android:layout_width="wrap_content"

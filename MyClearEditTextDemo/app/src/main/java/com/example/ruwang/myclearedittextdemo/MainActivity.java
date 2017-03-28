@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         EditMoudle modle = new EditMoudle();
         mBinding.setModle(modle);
         modle.setPadding(mBinding.btn,200);
+        mBinding.jiami.setText(SHA1.sha1("12341235"));//密码加密
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 

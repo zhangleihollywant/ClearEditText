@@ -33,43 +33,9 @@ public class EditMoudle extends BaseObservable {
 
     public EditMoudle() {
         timer = new MyCountTimer(60000, 1000);
-        timer.start();
         type.set(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        timer.start();
     }
-    /*
-    @BindingAdapter({"regular", "errorMsg"})
-    public static void editRule(EditText editText, final String regularExpression, final String errorMsg) {
-        final Context context = editText.getContext();
-
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() > 0) {
-                    if (s.toString()
-                            .subSequence(s.length() - 1, s.length())
-                            .toString()
-                            .matches(regularExpression)
-                            ) {
-
-                    } else {
-                        Toast.makeText(context, "不匹配", Toast.LENGTH_SHORT).show();
-                        s.delete(s.length() - 1, s.length());
-                    }
-                }
-            }
-        });
-    }
-*/
 
 
     /**
@@ -126,11 +92,11 @@ public class EditMoudle extends BaseObservable {
         return isMatch(REGEX_MOBILE_EXACT, sequence);
     }
 
-    public void cancle(){
+    public void cancle() {
         timer.cancel();
     }
 
-    public void reset(){
+    public void reset() {
         timer.start();
     }
 
@@ -150,7 +116,7 @@ public class EditMoudle extends BaseObservable {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            time.set("倒计时"+millisUntilFinished/1000);
+            time.set("倒计时" + millisUntilFinished / 1000);
         }
 
         @Override
@@ -158,4 +124,42 @@ public class EditMoudle extends BaseObservable {
             time.set("done");
         }
     }
+
+
+
+        /*
+    @BindingAdapter({"regular", "errorMsg"})
+    public static void editRule(EditText editText, final String regularExpression, final String errorMsg) {
+        final Context context = editText.getContext();
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0) {
+                    if (s.toString()
+                            .subSequence(s.length() - 1, s.length())
+                            .toString()
+                            .matches(regularExpression)
+                            ) {
+
+                    } else {
+                        Toast.makeText(context, "不匹配", Toast.LENGTH_SHORT).show();
+                        s.delete(s.length() - 1, s.length());
+                    }
+                }
+            }
+        });
+    }
+*/
+
 }

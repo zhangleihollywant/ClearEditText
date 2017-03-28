@@ -97,6 +97,11 @@
             android:layout_height="wrap_content"
             android:text="@{modle.time}"/>
 
+        <TextView
+            android:id="@+id/jiami"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
 
     </LinearLayout>

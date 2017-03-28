@@ -1,6 +1,7 @@
 package com.example.ruwang.myclearedittextdemo;
 
 import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.graphics.drawable.Drawable;
@@ -63,6 +64,18 @@ public class EditMoudle extends BaseObservable {
         });
     }
 */
+
+
+    /**
+     * 自定义的setter，因为android中只有paddingLeft，并没有setPadding可以设置setPaddingLeft
+     *
+     * @param view
+     * @param padding
+     */
+    @BindingAdapter("andriod:paddingLeft")
+    public static void setPadding(View view, int padding) {
+        view.setPadding(padding, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
+    }
 
     public void onClickImg(View view) {
         ImageView imageView = (ImageView) view;

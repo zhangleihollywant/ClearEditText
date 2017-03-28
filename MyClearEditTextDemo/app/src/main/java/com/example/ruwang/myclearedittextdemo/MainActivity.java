@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mBinding.setModle(new EditMoudle());
+        EditMoudle modle = new EditMoudle();
+        mBinding.setModle(modle);
+        modle.setPadding(mBinding.btn,200);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 }

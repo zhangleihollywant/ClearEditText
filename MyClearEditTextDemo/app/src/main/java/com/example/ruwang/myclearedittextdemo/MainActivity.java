@@ -20,4 +20,5 @@ public class MainActivity extends AppCompatActivity {
         modle.setPadding(mBinding.btn,200);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
+
 }

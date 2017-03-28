@@ -5,6 +5,7 @@ import android.databinding.BindingAdapter;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.graphics.drawable.Drawable;
+import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.View;
@@ -25,9 +26,14 @@ public class EditMoudle extends BaseObservable {
     public ObservableField<String> number = new ObservableField<>();
     public ObservableInt type = new ObservableInt();
     public ObservableField<String> password = new ObservableField<>();
+    public ObservableField<String> time = new ObservableField<>();
+
+    public MyCountTimer timer;
 
 
     public EditMoudle() {
+        timer = new MyCountTimer(60000, 1000);
+        timer.start();
         type.set(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
     /*
@@ -118,5 +124,38 @@ public class EditMoudle extends BaseObservable {
 
     public boolean isPhone(CharSequence sequence) {
         return isMatch(REGEX_MOBILE_EXACT, sequence);
+    }
+
+    public void cancle(){
+        timer.cancel();
+    }
+
+    public void reset(){
+        timer.start();
+    }
+
+
+    class MyCountTimer extends CountDownTimer {
+
+        /**
+         * @param millisInFuture    The number of millis in the future from the call
+         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
+         *                          is called.
+         * @param countDownInterval The interval along the way to receive
+         *                          {@link #onTick(long)} callbacks.
+         */
+        public MyCountTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            time.set("倒计时"+millisUntilFinished/1000);
+        }
+
+        @Override
+        public void onFinish() {
+            time.set("done");
+        }
     }
 }

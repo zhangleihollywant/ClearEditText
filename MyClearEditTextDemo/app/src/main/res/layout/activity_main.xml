@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!--如果直接在module中定义String类进行绑定数据的话得不到效果的，用局域-->
+                <!--如果直接在module中定义String类(直接将text设置input)进行绑定数据的话得不到效果的，用局域-->
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,6 +77,26 @@
             android:layout_height="wrap_content"
             android:onClick="@{(v)->modle.onBtnClick(v)}"
             android:text="验证"/>
+
+
+        <Button
+            android:onClick="@{()->modle.cancle()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消倒计时"/>
+
+        <Button
+            android:onClick="@{()->modle.reset()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新倒计时"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{modle.time}"/>
+
 
 
     </LinearLayout>

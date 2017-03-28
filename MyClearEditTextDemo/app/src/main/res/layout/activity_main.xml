@@ -32,6 +32,39 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入密码"
+                    android:inputType="@{modle.type}"
+                    android:text="@={modle.password}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:onClick="@{(v)->modle.onClickImg(v)}"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/user_login_pwdhint_icon"/>
+
+        </RelativeLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="验证的文本"
+            android:text="@={modle.password}"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -39,10 +72,6 @@
             android:onClick="@{(v)->modle.onBtnClick(v)}"
             android:text="验证"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={modle.text}"/>
 
     </LinearLayout>
 

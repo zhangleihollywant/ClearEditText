@@ -1,8 +1,14 @@
 package com.example.ruwang.myclearedittextdemo;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.text.InputType;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.regex.Pattern;
@@ -17,9 +23,24 @@ public class EditMoudle extends BaseObservable {
 
     public static final String REGEX_MOBILE_EXACT = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|(147))\\d{8}$";
     public ObservableField<String> number = new ObservableField<>();
-    public ObservableField<String> text = new ObservableField<>();
+    public ObservableInt type = new ObservableInt();
 
-/*
+    private String password;
+
+    public EditMoudle() {
+        type.set(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        notifyPropertyChanged(BR.password);
+    }
+
+    @Bindable
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /*
     @BindingAdapter({"regular", "errorMsg"})
     public static void editRule(EditText editText, final String regularExpression, final String errorMsg) {
         final Context context = editText.getContext();
@@ -53,6 +74,22 @@ public class EditMoudle extends BaseObservable {
         });
     }
 */
+
+    public void onClickImg(View view) {
+        ImageView imageView = (ImageView) view;
+        Drawable hindImg = ContextCompat.getDrawable(view.getContext(), R.drawable.user_login_pwdhint_icon);
+        Drawable showImg = ContextCompat.getDrawable(view.getContext(), R.drawable.user_login_pwdunhint_icon);
+
+        int tag = type.get();
+        if (tag == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {//显示的情况
+            type.set(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            imageView.setImageDrawable(showImg);
+        } else if (tag == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            type.set(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            imageView.setImageDrawable(hindImg);
+        }
+    }
+
 
     public void onBtnClick(View v) {
         String s = number.get().toString();

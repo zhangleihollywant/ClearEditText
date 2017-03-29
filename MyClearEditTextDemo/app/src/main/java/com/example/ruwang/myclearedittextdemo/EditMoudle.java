@@ -68,15 +68,19 @@ public class EditMoudle extends BaseObservable {
     public void onBtnClick(View v) {
         String s = number.get().toString();
         //里面有空格,匹配不上 trim（）方便也没用的，必须删除拼装
+        /**
+         * 不用删除组装那么麻烦  直接调用replace就可以了
+         */
 //        String s1 = text.get();//进行验证的输入框
+
         //进行拆分组装
-        String[] split = s.split(" ");
+       /* String[] split = s.split(" ");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < split.length; i++) {
             sb.append(split[i]);
-        }
+        }*/
 
-        if (isPhone(sb.toString())) {
+        if (isPhone(s.replace(" ",""))) {
             Toast.makeText(v.getContext(), "yes", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(v.getContext(), "nonono", Toast.LENGTH_SHORT).show();
